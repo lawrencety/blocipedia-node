@@ -1,10 +1,10 @@
 module.exports = {
   validateUsers(req, res, next) {
     if(req.method === 'POST') {
-      req.checkBody('name', 'must be at least 4 chracters in length').isLength({min: 4});
+      req.checkBody('name', 'must be at least 4 chracters in length').optional().isLength({min: 4});
       req.checkBody('email', 'must be valid').isEmail();
       req.checkBody('password', 'must be at least 6 characters in length').isLength({min: 6});
-      req.checkBody('passwordConfirmation', 'must match password provided').optional().matches(req.body.password);
+      req.checkBody('password_conf', 'must match password provided').optional().matches(req.body.password);
     }
     const errors = req.validationErrors();
     if(errors) {

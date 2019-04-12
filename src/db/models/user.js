@@ -21,12 +21,15 @@ module.exports = (sequelize, DataTypes) => {
     User.afterCreate((user, callback) => {
       const sgMail = require('@sendgrid/mail');
       sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+      console.log(sgMail.setApiKey(process.env.SENDGRID_API_KEY));
+      console.log(process.env.SENDGRID_API_KEY);
       const msg = {
         to: user.email,
         from: 'welcome@blocipedia.com',
         subject: 'Welcome to Blocipedia',
         text: 'Thanks for signing up'
       };
+      console.log(msg);
       return sgMail.send(msg);
     });
   };
