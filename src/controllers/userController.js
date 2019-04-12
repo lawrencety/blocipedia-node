@@ -15,7 +15,6 @@ module.exports = {
       password_conf: req.body.password_conf
     };
     userQueries.createUser(newUser, (err, user) => {
-      console.log(err);
       if(err) {
         req.flash('error', err);
         res.redirect('/user/signup')
@@ -33,17 +32,16 @@ module.exports = {
   },
 
   signIn(req, res, next) {
-      passport.authenticate('local') (req, res, () => {
-        console.log(req.user);
-        if(!req.user) {
-          req.flash('notice', 'Sign in failed. Please try again.')
-          res.redirect('/user/signin');
-        } else {
-          req.flash('notice', 'You\'ve successfully signed in!')
-          res.redirect('/')
-        }
-      })
-    },
+    passport.authenticate('local') (req, res, () => {
+      if(!req.user) {
+        req.flash('notice', 'Sign in failed. Please try again.')
+        res.redirect('/user/signin');
+      } else {
+        req.flash('notice', 'You\'ve successfully signed in!')
+        res.redirect('/')
+      }
+    })
+  },
 
   signOut(req, res, next) {
     req.logout();
