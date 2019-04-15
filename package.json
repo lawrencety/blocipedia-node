@@ -5,7 +5,7 @@
   "main": "\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[Csrc/server.js)",
   "scripts": {
     "test": "export NODE_ENV=test && jasmine",
-    "start": "nodemon src/server.js"
+    "start": "node src/server.js"
   },
   "repository": {
     "type": "git",
