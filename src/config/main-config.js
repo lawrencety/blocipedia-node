@@ -16,7 +16,6 @@ module.exports = {
     app.use(logger('dev'));
     app.use(express.static(path.join(__dirname, '..', 'assets')));
     app.use(expressValidator());
-    process.env.cookieSecret = "do not try this at home";
     app.use(session({
       secret: process.env.cookieSecret,
       resave: false,
