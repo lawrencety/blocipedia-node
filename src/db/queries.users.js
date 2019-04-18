@@ -38,9 +38,9 @@ module.exports = {
   upgrade(user, callback) {
     return User.update(
       { role: 1 },
-      {returning: true, where: {id : user.id}})
-    .then(([updatedRows, [updatedUser]]) => {
-      callback(null, updatedUser);
+      { where: {id : user.id}})
+    .then((updatedRows) => {
+      callback(null, updatedRows);
     })
     .catch((err) => {
       callback(err);
@@ -48,17 +48,14 @@ module.exports = {
   },
 
   downgrade(user, callback) {
-    return User.findByPk(user.id)
-    .then((user) => {
-      user.update({
-        values: { role: 0 }
-      })
-      .then((updatedUser) => {
-        callback(null, updatedUser);
-      })
-      .catch((err) => {
-        callback(err);
-      })
+    return User.update(
+      { role: 0 },
+      { where: {id : user.id}})
+    .then((updatedRows) => {
+      callback(null, updatedRows);
+    })
+    .catch((err) => {
+      callback(err);
     })
   }
 

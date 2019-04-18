@@ -14,6 +14,9 @@
         <h2>Current Plan: Premium</h2>
       <% } %>
       <hr>
+      <form style="display:initial" action="/user/<%= user.id %>/upgrade" method="post">
+        <button action="" class="btn btn-success">Upgrade</button>
+      </form>
       <form action="/user/<%= user.id %>/upgrade" method="POST">
         <script
           src="https://checkout.stripe.com/checkout.js" class="stripe-button"

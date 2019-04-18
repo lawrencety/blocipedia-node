@@ -67,7 +67,7 @@ module.exports = {
 
   upgradeUser(req, res, next) {
     userQueries.getUser(req.params.id, (err, result) => {
-      if(err || result.user) {
+      if(err || !result.user) {
         req.flash('notice', 'No user found with that ID.');
         res.redirect('/');
       } else {
@@ -102,7 +102,7 @@ module.exports = {
 
   downgradeUser(req, res, next) {
     userQueries.getUser(req.params.id, (err, result) => {
-      if(err || result.user) {
+      if(err || !result.user) {
         req.flash('notice', 'No user found with that ID.');
         res.redirect('/');
       } else {
@@ -112,10 +112,13 @@ module.exports = {
         } else {
           userQueries.downgrade(result.user, (err, user) => {
             if(err) {
+              console.log(err);
               req.flash('error', 'We have encountered an error');
               res.redirect(req.headers.referer);
             } else {
-              res.render('user/show', {...user});
+              userQueries.getUser(req.params.id, (err, result) => {
+                res.render('user/show', {...result});
+              })
             }
           })
         }
