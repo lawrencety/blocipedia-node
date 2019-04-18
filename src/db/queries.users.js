@@ -20,16 +20,43 @@ module.exports = {
   },
 
   getUser(id, callback) {
+    const result = [];
     return User.findByPk(id)
     .then((user) => {
       if(!user) {
         callback(404);
       } else {
-        callback(null, user);
+        result['user'] = user;
+        callback(null, result);
       }
     })
     .catch((err) => {
       callback(err);
     })
+  },
+
+  upgrade(user, callback) {
+    return User.update(
+      { role: 1 },
+      { where: {id : user.id}})
+    .then((updatedRows) => {
+      callback(null, updatedRows);
+    })
+    .catch((err) => {
+      callback(err);
+    })
+  },
+
+  downgrade(user, callback) {
+    return User.update(
+      { role: 0 },
+      { where: {id : user.id}})
+    .then((updatedRows) => {
+      callback(null, updatedRows);
+    })
+    .catch((err) => {
+      callback(err);
+    })
   }
+
 }

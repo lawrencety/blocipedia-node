@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../static/partials/head.ejs %>
+  </head>
+  <body>
+    <% include ../static/partials/navbar.ejs %>
+    <main class="container">
+      <% include ../static/partials/messages.ejs %>
+      <h1><%= `${user.name}'s profile` %></h1>
+      <% if (user.role === 0) { %>
+        <h2>Current Plan: Standard</h2>
+      <% } else if (user.role === 1) { %>
+        <h2>Current Plan: Premium</h2>
+      <% } %>
+      <hr>
+      <% if (currentUser) { %>
+        <% if (currentUser.id === user.id) { %>
+          <% if (user.role === 0) { %>
+            <a href="/user/<%= user.id %>/payment">Upgrade</a>
+          <% } else { %>
+            <form style="display:initial" action="/user/<%= user.id %>/downgrade" method="post">
+              <button action="" class="btn btn-warning">Downgrade</button>
+            </form>
+          <% } %>
+        <% } %>
+      <% } %>
+    </main>
+    <% include ../static/partials/baseScripts.ejs %>
+  </body>
+</html>

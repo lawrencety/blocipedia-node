@@ -1,5 +1,6 @@
 const userQueries = require('../db/queries.users.js');
 const passport = require('passport');
+const stripe = require("stripe")("sk_test_mZ2POrqrGLDXl8bOs3fy9fYo00DhgCkIXi");
 
 module.exports = {
 
@@ -58,6 +59,70 @@ module.exports = {
         res.render('user/show', {...result});
       }
     })
-  }
+  },
+
+  payment(req, res, next) {
+    res.render('user/payment', {...req})
+  },
+
+  upgradeUser(req, res, next) {
+    userQueries.getUser(req.params.id, (err, result) => {
+      if(err || !result.user) {
+        req.flash('notice', 'No user found with that ID.');
+        res.redirect('/');
+      } else {
+        if (result.user.role === 1) {
+          req.flash('notice', 'This user is already a premium account');
+          res.redirect(req.headers.referer);
+        } else {
+          const token = req.body.stripeToken; // Using Express
+          console.log(token)
+          const charge = stripe.charges.create({
+            amount: 1500,
+            currency: 'usd',
+            description: 'Membership charge',
+            source: token,
+          });
+          userQueries.upgrade(result.user, (err, user) => {
+            if(err) {
+              req.flash('error', 'We have encountered an error');
+              res.redirect(req.headers.referer);
+            } else {
+              userQueries.getUser(req.params.id, (err, result) => {
+                res.render('user/show', {...result});
+              })
+            }
+          })
+
+        }
+      }
+    })
+  },
+
+  downgradeUser(req, res, next) {
+    userQueries.getUser(req.params.id, (err, result) => {
+      if(err || !result.user) {
+        req.flash('notice', 'No user found with that ID.');
+        res.redirect('/');
+      } else {
+        if (result.user.role === 0) {
+          req.flash('notice', 'This user is already a standard account');
+          res.redirect(req.headers.referer);
+        } else {
+          userQueries.downgrade(result.user, (err, user) => {
+            if(err) {
+              console.log(err);
+              req.flash('error', 'We have encountered an error');
+              res.redirect(req.headers.referer);
+            } else {
+              userQueries.getUser(req.params.id, (err, result) => {
+                res.render('user/show', {...result});
+              })
+            }
+          })
+        }
+      }
+    })
+  },
 
 }

@@ -1,0 +1,100 @@
+2019-04-15T02:23:49.612596+00:00 heroku[web.1]: State changed from crashed to starting
+2019-04-15T02:23:49.261738+00:00 app[api]: Deploy 9e0ecae6 by user lawrence.t.yen@gmail.com
+2019-04-15T02:23:49.261738+00:00 app[api]: Release v7 created by user lawrence.t.yen@gmail.com
+2019-04-15T02:23:50.000000+00:00 app[api]: Build succeeded
+2019-04-15T02:23:52.556748+00:00 heroku[web.1]: Starting process with command `npm start`
+2019-04-15T02:23:55.930567+00:00 heroku[web.1]: State changed from starting to crashed
+2019-04-15T02:23:55.937944+00:00 heroku[web.1]: State changed from crashed to starting
+2019-04-15T02:23:55.843985+00:00 app[web.1]: 
+2019-04-15T02:23:55.844005+00:00 app[web.1]: > blocipedia-node@1.0.0 start /app
+2019-04-15T02:23:55.844007+00:00 app[web.1]: > nodemon src/server.js
+2019-04-15T02:23:55.844008+00:00 app[web.1]: 
+2019-04-15T02:23:55.849268+00:00 app[web.1]: sh: 1: nodemon: not found
+2019-04-15T02:23:55.853688+00:00 app[web.1]: npm ERR! file sh
+2019-04-15T02:23:55.853932+00:00 app[web.1]: npm ERR! code ELIFECYCLE
+2019-04-15T02:23:55.854123+00:00 app[web.1]: npm ERR! errno ENOENT
+2019-04-15T02:23:55.854378+00:00 app[web.1]: npm ERR! syscall spawn
+2019-04-15T02:23:55.855542+00:00 app[web.1]: npm ERR! blocipedia-node@1.0.0 start: `nodemon src/server.js`
+2019-04-15T02:23:55.855723+00:00 app[web.1]: npm ERR! spawn ENOENT
+2019-04-15T02:23:55.856010+00:00 app[web.1]: npm ERR!
+2019-04-15T02:23:55.856204+00:00 app[web.1]: npm ERR! Failed at the blocipedia-node@1.0.0 start script.
+2019-04-15T02:23:55.856392+00:00 app[web.1]: npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+2019-04-15T02:23:55.864515+00:00 app[web.1]: 
+2019-04-15T02:23:55.864683+00:00 app[web.1]: npm ERR! A complete log of this run can be found in:
+2019-04-15T02:23:55.864780+00:00 app[web.1]: npm ERR!     /app/.npm/_logs/2019-04-15T02_23_55_857Z-debug.log
+2019-04-15T02:23:55.911386+00:00 heroku[web.1]: Process exited with status 1
+2019-04-15T02:23:58.851201+00:00 heroku[web.1]: Starting process with command `npm start`
+2019-04-15T02:24:00.972161+00:00 heroku[web.1]: State changed from starting to crashed
+2019-04-15T02:24:00.874387+00:00 app[web.1]: 
+2019-04-15T02:24:00.874410+00:00 app[web.1]: > blocipedia-node@1.0.0 start /app
+2019-04-15T02:24:00.874412+00:00 app[web.1]: > nodemon src/server.js
+2019-04-15T02:24:00.874414+00:00 app[web.1]: 
+2019-04-15T02:24:00.882864+00:00 app[web.1]: sh: 1: nodemon: not found
+2019-04-15T02:24:00.888603+00:00 app[web.1]: npm ERR! file sh
+2019-04-15T02:24:00.888980+00:00 app[web.1]: npm ERR! code ELIFECYCLE
+2019-04-15T02:24:00.889235+00:00 app[web.1]: npm ERR! errno ENOENT
+2019-04-15T02:24:00.889486+00:00 app[web.1]: npm ERR! syscall spawn
+2019-04-15T02:24:00.891170+00:00 app[web.1]: npm ERR! blocipedia-node@1.0.0 start: `nodemon src/server.js`
+2019-04-15T02:24:00.891355+00:00 app[web.1]: npm ERR! spawn ENOENT
+2019-04-15T02:24:00.891659+00:00 app[web.1]: npm ERR!
+2019-04-15T02:24:00.891867+00:00 app[web.1]: npm ERR! Failed at the blocipedia-node@1.0.0 start script.
+2019-04-15T02:24:00.892041+00:00 app[web.1]: npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+2019-04-15T02:24:00.899486+00:00 app[web.1]: 
+2019-04-15T02:24:00.899707+00:00 app[web.1]: npm ERR! A complete log of this run can be found in:
+2019-04-15T02:24:00.899860+00:00 app[web.1]: npm ERR!     /app/.npm/_logs/2019-04-15T02_24_00_893Z-debug.log
+2019-04-15T02:24:00.955531+00:00 heroku[web.1]: Process exited with status 1
+2019-04-15T02:24:02.228758+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=lawrencety-blocipedia.herokuapp.com request_id=1a8e54c6-ac64-4702-ae46-bb1eb7e163b8 fwd="76.247.176.152" dyno= connect= service= status=503 bytes= protocol=https
+2019-04-15T02:24:19.296797+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=lawrencety-blocipedia.herokuapp.com request_id=77d2193a-4a87-4f07-9df0-7356a57fb8f1 fwd="76.247.176.152" dyno= connect= service= status=503 bytes= protocol=https
+2019-04-15T02:27:28.508083+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=lawrencety-blocipedia.herokuapp.com request_id=e04a1d8d-7533-4bf7-a448-3bc60ee45215 fwd="108.5.208.144" dyno= connect= service= status=503 bytes= protocol=http
+2019-04-15T02:29:30.083054+00:00 heroku[web.1]: State changed from crashed to starting
+2019-04-15T02:29:33.498226+00:00 heroku[web.1]: Starting process with command `npm start`
+2019-04-15T02:29:29.406366+00:00 app[api]: Release v8 created by user lawrence.t.yen@gmail.com
+2019-04-15T02:29:29.406366+00:00 app[api]: Set NPM_CONFIG_LOGLEVEL config vars by user lawrence.t.yen@gmail.com
+2019-04-15T02:29:36.268202+00:00 heroku[web.1]: State changed from starting to crashed
+2019-04-15T02:29:36.011116+00:00 app[web.1]: npm info it worked if it ends with ok
+2019-04-15T02:29:36.011661+00:00 app[web.1]: npm verb cli [ '/app/.heroku/node/bin/node',
+2019-04-15T02:29:36.011960+00:00 app[web.1]: npm verb cli   '/app/.heroku/node/bin/npm',
+2019-04-15T02:29:36.012260+00:00 app[web.1]: npm verb cli   'start' ]
+2019-04-15T02:29:36.012546+00:00 app[web.1]: npm info using npm@6.4.1
+2019-04-15T02:29:36.012804+00:00 app[web.1]: npm info using node@v10.15.3
+2019-04-15T02:29:36.013072+00:00 app[web.1]: npm verb config Skipping project config: /app/.npmrc. (matches userconfig)
+2019-04-15T02:29:36.129259+00:00 app[web.1]: npm verb run-script [ 'prestart', 'start', 'poststart' ]
+2019-04-15T02:29:36.131710+00:00 app[web.1]: npm info lifecycle blocipedia-node@1.0.0~prestart: blocipedia-node@1.0.0
+2019-04-15T02:29:36.132785+00:00 app[web.1]: npm info lifecycle blocipedia-node@1.0.0~start: blocipedia-node@1.0.0
+2019-04-15T02:29:36.139004+00:00 app[web.1]: 
+2019-04-15T02:29:36.139008+00:00 app[web.1]: > blocipedia-node@1.0.0 start /app
+2019-04-15T02:29:36.139009+00:00 app[web.1]: > nodemon src/server.js
+2019-04-15T02:29:36.139011+00:00 app[web.1]: 
+2019-04-15T02:29:36.145322+00:00 app[web.1]: sh: 1: nodemon: not found
+2019-04-15T02:29:36.148818+00:00 app[web.1]: npm verb lifecycle blocipedia-node@1.0.0~start: unsafe-perm in lifecycle true
+2019-04-15T02:29:36.149229+00:00 app[web.1]: npm verb lifecycle blocipedia-node@1.0.0~start: PATH: /app/.heroku/node/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/app/node_modules/.bin:/app/.heroku/node/bin:/app/.heroku/yarn/bin:/usr/local/bin:/usr/bin:/bin:/app/bin:/app/node_modules/.bin
+2019-04-15T02:29:36.149467+00:00 app[web.1]: npm verb lifecycle blocipedia-node@1.0.0~start: CWD: /app
+2019-04-15T02:29:36.149724+00:00 app[web.1]: npm info lifecycle blocipedia-node@1.0.0~start: Failed to exec start script
+2019-04-15T02:29:36.151281+00:00 app[web.1]: npm verb stack Error: blocipedia-node@1.0.0 start: `nodemon src/server.js`
+2019-04-15T02:29:36.151511+00:00 app[web.1]: npm verb stack spawn ENOENT
+2019-04-15T02:29:36.151747+00:00 app[web.1]: npm verb stack     at ChildProcess.<anonymous> (/app/.heroku/node/lib/node_modules/npm/node_modules/npm-lifecycle/lib/spawn.js:48:18)
+2019-04-15T02:29:36.151975+00:00 app[web.1]: npm verb stack     at ChildProcess.emit (events.js:189:13)
+2019-04-15T02:29:36.152219+00:00 app[web.1]: npm verb stack     at maybeClose (internal/child_process.js:970:16)
+2019-04-15T02:29:36.152485+00:00 app[web.1]: npm verb stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:259:5)
+2019-04-15T02:29:36.152755+00:00 app[web.1]: npm verb pkgid blocipedia-node@1.0.0
+2019-04-15T02:29:36.153031+00:00 app[web.1]: npm verb cwd /app
+2019-04-15T02:29:36.153298+00:00 app[web.1]: npm verb Linux 4.4.0-1038-aws
+2019-04-15T02:29:36.153614+00:00 app[web.1]: npm verb argv "/app/.heroku/node/bin/node" "/app/.heroku/node/bin/npm" "start"
+2019-04-15T02:29:36.153881+00:00 app[web.1]: npm verb node v10.15.3
+2019-04-15T02:29:36.154132+00:00 app[web.1]: npm verb npm  v6.4.1
+2019-04-15T02:29:36.154528+00:00 app[web.1]: npm ERR! file sh
+2019-04-15T02:29:36.154814+00:00 app[web.1]: npm ERR! code ELIFECYCLE
+2019-04-15T02:29:36.155079+00:00 app[web.1]: npm ERR! errno ENOENT
+2019-04-15T02:29:36.155353+00:00 app[web.1]: npm ERR! syscall spawn
+2019-04-15T02:29:36.157009+00:00 app[web.1]: npm ERR! blocipedia-node@1.0.0 start: `nodemon src/server.js`
+2019-04-15T02:29:36.157213+00:00 app[web.1]: npm ERR! spawn ENOENT
+2019-04-15T02:29:36.157444+00:00 app[web.1]: npm ERR!
+2019-04-15T02:29:36.157641+00:00 app[web.1]: npm ERR! Failed at the blocipedia-node@1.0.0 start script.
+2019-04-15T02:29:36.157850+00:00 app[web.1]: npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+2019-04-15T02:29:36.158626+00:00 app[web.1]: npm verb exit [ 1, true ]
+2019-04-15T02:29:36.169167+00:00 app[web.1]: npm timing npm Completed in 255ms
+2019-04-15T02:29:36.169507+00:00 app[web.1]: 
+2019-04-15T02:29:36.169759+00:00 app[web.1]: npm ERR! A complete log of this run can be found in:
+2019-04-15T02:29:36.169910+00:00 app[web.1]: npm ERR!     /app/.npm/_logs/2019-04-15T02_29_36_159Z-debug.log
+2019-04-15T02:29:36.246385+00:00 heroku[web.1]: Process exited with status 1
+2019-04-15T02:29:48.384165+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=lawrencety-blocipedia.herokuapp.com request_id=a6f0296f-adbb-4247-ad47-d95c8c32ad82 fwd="76.247.176.152" dyno= connect= service= status=503 bytes= protocol=https
