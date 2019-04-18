@@ -17,7 +17,8 @@ module.exports = {
       },
       private: {
         type: Sequelize.BOOLEAN,
-        allowNull: false
+        allowNull: false,
+        defaultValue: false        
       },
       userId: {
         type: Sequelize.INTEGER,
