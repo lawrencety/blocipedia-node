@@ -75,6 +75,14 @@ module.exports = {
           req.flash('notice', 'This user is already a premium account');
           res.redirect(req.headers.referer);
         } else {
+          const token = req.body.stripeToken; // Using Express
+          console.log(token)
+          const charge = stripe.charges.create({
+            amount: 1500,
+            currency: 'usd',
+            description: 'Membership charge',
+            source: token,
+          });
           userQueries.upgrade(result.user, (err, user) => {
             if(err) {
               req.flash('error', 'We have encountered an error');
@@ -85,16 +93,7 @@ module.exports = {
               })
             }
           })
-          const token = request.body.stripeToken; // Using Express
-          (async () => {
-            const charge = await stripe.charges.create({
-              amount: 1500,
-              currency: 'usd',
-              description: 'Membership charge',
-              source: token,
-            });
-          })
-          ();
+
         }
       }
     })
