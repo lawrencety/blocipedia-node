@@ -1,5 +1,6 @@
 const wikiQueries = require('../db/queries.wiki.js');
 const Authorizer = require('../policies/wiki');
+const markdown = require('markdown').markdown;
 
 module.exports = {
   index(req, res, next) {
@@ -15,7 +16,7 @@ module.exports = {
   new(req, res, next) {
     const authorized = new Authorizer(req.user).new();
     if(authorized) {
-      res.render('wiki/new');
+      res.render('wiki/new', {markdown});
     } else {
       req.flash('notice', 'You must be signed in to do that.');
       res.redirect(req.headers.referer);
@@ -36,7 +37,7 @@ module.exports = {
         if (err) {
           res.redirect(500, '/wiki/new');
         } else {
-          res.render('wiki/show', {wiki})
+          res.render('wiki/show', {wiki, markdown})
         }
       })
     } else {
@@ -50,7 +51,7 @@ module.exports = {
       if(err) {
         res.redirect(404, '/wiki')
       } else {
-        res.render('wiki/show', {wiki})
+        res.render('wiki/show', {wiki, markdown})
       }
     })
   },
@@ -82,7 +83,7 @@ module.exports = {
             if(err) {
               res.redirect(401, `/wiki/${req.params.id}`);
             } else {
-              res.render('wiki/show', {wiki});
+              res.render('wiki/show', {wiki, markdown});
             }
           })
         } else {
