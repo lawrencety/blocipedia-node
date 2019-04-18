@@ -20,6 +20,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: 0
+      /*
+        0 = standard
+        1 = premium
+        2 = admin
+      */
     }
   }, {});
   User.associate = function(models) {
