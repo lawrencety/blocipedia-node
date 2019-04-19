@@ -24,10 +24,8 @@ module.exports = {
     })
   },
 
-  getAllPublicWikis(callback) {
-    return Wiki.findAll({
-      where: {private: false}
-    })
+  getAllWikis(callback) {
+    return Wiki.findAll()
     .then((wikis) => {
       callback(null, wikis);
     })

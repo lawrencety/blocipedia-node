@@ -1,4 +1,5 @@
 const User = require('./models').User;
+const Wiki = require('./models').Wiki;
 const bcrypt = require('bcryptjs');
 
 module.exports = {
@@ -50,12 +51,19 @@ module.exports = {
   downgrade(user, callback) {
     return User.update(
       { role: 0 },
-      { where: {id : user.id}})
+      { where: { id : user.id } }
+    )
     .then((updatedRows) => {
-      callback(null, updatedRows);
-    })
-    .catch((err) => {
-      callback(err);
+      Wiki.update(
+        { private: false },
+        { where: { userId: user.id } }
+      )
+      .then((updatedWikis) => {
+        callback(null, updatedRows);
+      })
+      .catch((err) => {
+        callback(err);
+      })
     })
   }
 

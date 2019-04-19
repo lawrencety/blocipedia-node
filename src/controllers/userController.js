@@ -109,9 +109,9 @@ module.exports = {
           req.flash('notice', 'This user is already a standard account');
           res.redirect(req.headers.referer);
         } else {
+          req.flash('notice', 'Downgrading will make all of your wikis public'); 
           userQueries.downgrade(result.user, (err, user) => {
             if(err) {
-              console.log(err);
               req.flash('error', 'We have encountered an error');
               res.redirect(req.headers.referer);
             } else {

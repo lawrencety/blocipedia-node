@@ -21,7 +21,11 @@
         <% if (currentUser.role !== 0) { %>
           <div class="form-group">
             <label for="private">Private?</label>
-            <input type="checkbox" name="private" value="private">
+            <% if (wiki.private) { %>
+              <input type="checkbox" name="private" checked>
+            <% } else { %>
+              <input type="checkbox" name="private">
+            <% } %>
           </div>
         <% } %>
         <button type="submit" class="btn btn-primary">Submit</button>
