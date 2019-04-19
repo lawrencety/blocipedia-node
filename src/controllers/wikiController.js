@@ -4,7 +4,7 @@ const markdown = require('markdown').markdown;
 
 module.exports = {
   index(req, res, next) {
-    wikiQueries.getAllPublicWikis((err, wikis) => {
+    wikiQueries.getAllWikis((err, wikis) => {
       if(err){
         res.redirect(500, req.headers.referer);
       } else {

@@ -6,17 +6,42 @@
   <body>
     <% include ../static/partials/navbar.ejs %>
     <main class="container">
-      <h2>Wikis</h2>
-      <a href="/wiki/new" class="btn btn-success">New Wiki</a>
-      <ul class="list-group">
-        <% wikis.forEach((wiki) => { %>
-          <% if (!wiki.private) { %>
-            <li class="list-group-item">
-              <a href="/wiki/<%= wiki.id %>"> <%= wiki.title %> </a>
-            </li>
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Public Wikis</h2>
+          <ul class="list-group">
+            <% wikis.forEach((wiki) => { %>
+              <% if (!wiki.private) { %>
+                <li class="list-group-item">
+                  <a href="/wiki/<%= wiki.id %>"> <%= wiki.title %> </a>
+                </li>
+              <% } %>
+            <% }) %>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <h2>My Private Wikis</h2>
+          <% if (currentUser.role === 0) { %>
+            <p>Upgrade today to create private wikis!</p>
+            <a href="/wiki/<%= currentUser.id %>" class="btn btn-success">Upgrade</a>
+          <% } else { %>
+            <ul class="list-group">
+              <% wikis.forEach((wiki) => {  console.log(wiki.private)%>
+                <% if (wiki.private && (wiki.userId === currentUser.id)) { %>
+                  <li class="list-group-item">
+                    <a href="/wiki/<%= wiki.id %>"> <%= wiki.title %> </a>
+                  </li>
+                <% } %>
+              <% }) %>
+            </ul>
           <% } %>
-        <% }) %>
-      </ul>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-xs-2">
+          <a href="/wiki/new" class="btn btn-success">New Wiki</a>
+        </div>
+      </div>
     </main>
     <% include ../static/partials/baseScripts.ejs %>
   </body>
