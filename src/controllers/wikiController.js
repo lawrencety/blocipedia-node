@@ -9,11 +9,11 @@ module.exports = {
       if(err){
         res.redirect(500, req.headers.referer);
       } else if (req.user) {
-        userQueries.getUser(req.user.id, (err, user) => {
+        userQueries.getUser(req.user.id, (err, result) => {
           if(err){
             res.redirect(500, req.headers.referer);
           } else {
-            res.render('wiki/wiki', {wikis, user});
+            res.render('wiki/wiki', {wikis, result});
           }
         })
       } else {

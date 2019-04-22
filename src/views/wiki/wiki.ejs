@@ -34,10 +34,9 @@
                 </li>
               <% } %>
             <% }) %>
-            <% console.log(user.collaborators) %>
-            <% if (user.collaborators) { %>
-              <% user.collaborators.forEach((collaborator) => { %>
-                <% if (collaborator.Wiki.private && (collaborator.Wiki.userId === currentUser.id)) { %>
+            <% if (result.user.collaborators) { %>
+              <% result.user.collaborators.forEach((collaborator) => { %>
+                <% if (collaborator.Wiki.private && (collaborator.userId === currentUser.id)) { %>
                   <li class="list-group-item">
                     <a href="/wiki/<%= collaborator.Wiki.id %>"> <%= collaborator.Wiki.title %> </a>
                   </li>
