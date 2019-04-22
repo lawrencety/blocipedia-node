@@ -1,5 +1,6 @@
 const User = require('./models').User;
 const Wiki = require('./models').Wiki;
+const Collaborator = require('./models').Collaborator;
 const bcrypt = require('bcryptjs');
 
 module.exports = {
@@ -22,7 +23,11 @@ module.exports = {
 
   getUser(id, callback) {
     const result = [];
-    return User.findByPk(id)
+    return User.findByPk(id, {
+      include: [
+        { model: Collaborator, as: 'collaborators', include: [{ model: Wiki }] }
+      ]
+    })
     .then((user) => {
       if(!user) {
         callback(404);

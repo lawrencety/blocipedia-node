@@ -1,5 +1,6 @@
 const Wiki = require('./models').Wiki;
 const User = require('./models').User;
+const Collaborator = require('./models').Collaborator;
 
 module.exports = {
   addWiki(newWiki, callback) {
@@ -14,7 +15,9 @@ module.exports = {
 
   getWiki(id, callback) {
     return Wiki.findByPk(id, {
-      include: [{ model: User }]
+      include: [
+        { model: Collaborator, as: 'collaborators', include: [{ model: User }] }
+      ]
     })
     .then((wiki) => {
       callback(null, wiki);
