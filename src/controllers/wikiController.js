@@ -1,4 +1,5 @@
 const wikiQueries = require('../db/queries.wiki.js');
+const userQueries = require('../db/queries.users.js');
 const Authorizer = require('../policies/wiki');
 const markdown = require('markdown').markdown;
 
@@ -7,8 +8,16 @@ module.exports = {
     wikiQueries.getAllWikis((err, wikis) => {
       if(err){
         res.redirect(500, req.headers.referer);
+      } else if (req.user) {
+        userQueries.getUser(req.user.id, (err, user) => {
+          if(err){
+            res.redirect(500, req.headers.referer);
+          } else {
+            res.render('wiki/wiki', {wikis, user});
+          }
+        })
       } else {
-        res.render('wiki/wiki', {wikis});
+        res.render('wiki/wiki', {wikis})
       }
     })
   },
@@ -32,7 +41,6 @@ module.exports = {
         private: (req.body.private === 'private'),
         userId: req.user.id
       };
-      console.log(newWiki);
       wikiQueries.addWiki(newWiki, (err, wiki) => {
         if (err) {
           res.redirect(500, '/wiki/new');

@@ -8,7 +8,7 @@ module.exports = {
       let newCollaborator = {
         email: req.body.email,
       };
-      collaboratorQueries.createCollaborator(req, email, (err, collaborator) => {
+      collaboratorQueries.createCollaborator(req, newCollaborator.email, (err, collaborator) => {
         if(err) {
           req.flash('error', err);
           res.redirect(req.headers.referer);

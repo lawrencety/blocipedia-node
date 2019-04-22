@@ -9,7 +9,7 @@ module.exports = {
     })
     .then((user) => {
       Collaborator.create({
-        wikiId: req.params.wikiId,
+        wikiId: req.params.id,
         userId: user.id
       })
       .then((collaborator) => {

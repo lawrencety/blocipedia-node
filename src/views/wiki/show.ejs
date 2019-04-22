@@ -11,25 +11,35 @@
       <%- markdown.toHTML(wiki.body) %>
       <hr>
       <h3>Collaborators</h3>
-        <ul class="list-group">
-          <% wiki.collaborators.forEach((collaborator) => { %>
-            <li class="list-group-item">
-              <p>collaborator.email</p>
-              <form style="display:initial" action="/wiki/<%= wiki.id %>/collaborator/<%= collaborator.id %>" method="post">
-                <button type="submit" class="btn btn-danger">Remove</button>
-              </form>
-            </li>
-          <% }) %>
-        </ul>
-        <form style="display:initial" action="/wiki/<%= wiki.id %>/collaborator" method="post">
-          <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" name="email" placeholder="Enter Email" class="form-control"/>
-            <small class="text-muted" id="emailHelp">email must be a valid email</small>
-          </div>
-          <button type="submit" class="btn btn-success">Add New</button>
-        </form>
-      <hr>
+      <ul class="list-group">
+        <% wiki.collaborators.forEach((collaborator) => { %>
+          <li class="list-group-item">
+            <div class="row">
+              <p><%= collaborator.User.email %></p>
+              <% if (currentUser) { %>
+                <% if (currentUser.id === wiki.userId || currentUser.role != 0) { %>
+                  <form style="display:initial" action="/wiki/<%= wiki.id %>/collaborator/<%= collaborator.id %>" method="post">
+                    <button type="submit" class="btn btn-danger">Remove</button>
+                  </form>
+                <% } %>
+              <% } %>
+            </div>    
+          </li>
+        <% }) %>
+      </ul>
+      <% if (currentUser) { %>
+        <% if (currentUser.id === wiki.userId || currentUser.role != 0) { %>
+          <form style="display:initial" action="/wiki/<%= wiki.id %>/collaborator" method="post">
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" name="email" placeholder="Enter Email" class="form-control"/>
+              <small class="text-muted" id="emailHelp">email must be a valid email</small>
+            </div>
+            <button type="submit" class="btn btn-success">Add New</button>
+          </form>
+          <hr>
+        <% } %>
+      <% } %>
       <a href="/wiki/<%= wiki.id %>/edit" class="btn btn-warning">Edit</a>
       <form style="display:initial" action="/wiki/<%= wiki.id %>/destroy" method="post">
         <button type="submit" class="btn btn-danger">Delete</button>
