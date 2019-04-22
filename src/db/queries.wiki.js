@@ -16,7 +16,7 @@ module.exports = {
   getWiki(id, callback) {
     return Wiki.findByPk(id, {
       include: [
-        { model: Collaborator, as: 'collaborators', include: [{ model: User, as: 'users' }]}
+        { model: Collaborator, as: 'collaborators' }
       ]
     })
     .then((wiki) => {

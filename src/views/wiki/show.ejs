@@ -7,7 +7,9 @@
     <% include ../static/partials/navbar.ejs %>
     <main class="container">
       <h2><%= wiki.title %></h2>
+      <hr>
       <%- markdown.toHTML(wiki.body) %>
+      <hr>
       <h3>Collaborators</h3>
         <ul class="list-group">
           <% wiki.collaborators.forEach((collaborator) => { %>
@@ -27,6 +29,7 @@
           </div>
           <button type="submit" class="btn btn-success">Add New</button>
         </form>
+      <hr>
       <a href="/wiki/<%= wiki.id %>/edit" class="btn btn-warning">Edit</a>
       <form style="display:initial" action="/wiki/<%= wiki.id %>/destroy" method="post">
         <button type="submit" class="btn btn-danger">Delete</button>
